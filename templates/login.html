@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card shadow p-4">
+    <h2 class="text-center mb-4">Giriş Yap</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Şifre</label>
+
+            <div class="input-group">
+                <input type="password"
+                       name="password"
+                       id="loginPassword"
+                       class="form-control"
+                       required>
+
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        onclick="toggleLoginPassword()">
+                    <i id="loginIcon" class="bi bi-eye-slash"></i>
+                </button>
+            </div>
+        </div>
+
+        <button class="btn btn-primary w-100">Giriş Yap</button>
+    </form>
+</div>
+
+<script>
+function toggleLoginPassword() {
+    const input = document.getElementById("loginPassword");
+    const icon = document.getElementById("loginIcon");
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+    } else {
+        input.type = "password";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+    }
+}
+</script>
+
+{% endblock %}
